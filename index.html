@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>불교학 학술지 편집검토 프롬프트 아카이브</title>
+  <meta name="description" content="투고규정 PDF와 AI 편집검토 프롬프트를 함께 제공하는 학술지 편집 보조 도구" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-pattern" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-badge">Buddhist Studies · 학술 편집 보조 도구</div>
+      <h1 class="hero-title">불교학 학술지<br>편집검토 프롬프트 아카이브</h1>
+      <p class="hero-sub">투고규정 PDF와 AI 편집검토 프롬프트를 함께 제공하는 학술지 편집 보조 도구</p>
+      <p class="hero-desc">학술지를 선택하면 해당 학술지 투고 양식 PDF와 불교학 학술지 편집검토 프롬프트를 함께 내려받을 수 있습니다. Claude, Gemini, ChatGPT에서 활용할 수 있으며, 최종 판단은 반드시 연구자와 편집자가 직접 검토해야 합니다.</p>
+      <nav class="hero-nav" aria-label="주요 섹션 바로가기">
+        <a href="#journal-select" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          학술지 선택하기
+        </a>
+        <a href="#generic-prompt" class="btn btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          범용 인문사회 프롬프트 받기
+        </a>
+        <a href="#usage-guide" class="btn btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          사용 절차 보기
+        </a>
+        <a href="#video" class="btn btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          안내 영상 보기
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- JOURNAL SELECT + VIDEO -->
+    <section id="journal-select" class="section">
+      <div class="container">
+        <div class="two-col">
+
+          <div class="card card-primary">
+            <div class="card-icon-svg" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <h2 class="card-title">학술지 선택</h2>
+            <p class="card-desc">29종 불교학 관련 학술지 중에서 선택하십시오. 해당 투고 양식 PDF와 편집검토 프롬프트를 함께 내려받을 수 있습니다.</p>
+
+            <div class="select-wrapper">
+              <label for="journal-dropdown" class="select-label">학술지 선택</label>
+              <select id="journal-dropdown" class="journal-select" aria-label="학술지 선택">
+                <option value="">-- 학술지를 선택하십시오 --</option>
+              </select>
+            </div>
+
+            <div id="journal-result" class="journal-result hidden" role="region" aria-live="polite" aria-label="선택된 학술지 정보">
+              <div class="result-header">
+                <span class="result-label">선택한 학술지</span>
+                <span id="selected-journal-name" class="result-journal-name"></span>
+              </div>
+              <ol class="result-steps">
+                <li>먼저 <strong>투고 양식 PDF</strong>를 다운로드하십시오.</li>
+                <li>그다음 <strong>불교학 편집검토 프롬프트</strong>를 다운로드하십시오.<br><span class="result-steps-note">다운로드와 동시에 프롬프트 전문이 클립보드에 자동 복사됩니다.</span></li>
+                <li>AI 도구에 투고 양식 PDF와 검토 대상 논문 PDF를 업로드한 뒤, 프롬프트를 붙여넣으십시오.</li>
+              </ol>
+              <div class="result-buttons">
+                <button id="pdf-download-btn" type="button" class="btn btn-download" aria-label="투고 양식 PDF 다운로드">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  투고 양식 PDF 다운로드
+                </button>
+                <button id="buddhist-prompt-btn" class="btn btn-download btn-prompt" type="button" aria-label="불교학 편집검토 프롬프트 다운로드 및 전문 복사">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  불교학 편집검토 프롬프트 다운로드 + 복사
+                </button>
+                <button id="copy-usage-btn" class="btn btn-copy" type="button">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  사용법 복사하기
+                </button>
+              </div>
+              <div id="copy-toast" class="toast hidden" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <!-- 안내 영상 카드 -->
+          <div id="video" class="card card-video">
+            <div class="card-icon-svg card-icon-teal" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </div>
+            <h2 class="card-title">사용법 안내 영상</h2>
+            <p class="card-desc">아래 영상에서 프롬프트와 투고 양식 PDF를 함께 사용하는 방법을 확인할 수 있습니다.</p>
+            <div class="video-wrapper">
+              <!-- 아래 VIDEO_ID를 실제 유튜브 영상 ID로 교체하십시오 -->
+              <iframe
+                id="youtube-iframe"
+                src="https://www.youtube.com/embed/VIDEO_ID"
+                title="불교학 학술지 편집검토 프롬프트 사용 안내 영상"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GENERIC PROMPT -->
+    <section id="generic-prompt" class="section section-tinted">
+      <div class="container">
+        <div class="card card-generic">
+          <div class="generic-inner">
+            <div class="generic-text">
+              <div class="card-icon-svg card-icon-teal" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <h2 class="card-title">불교학 외 학술지 검토가 필요한가요?</h2>
+              <p class="card-desc">불교학 학술지가 아닌 인문사회 분야 학술지를 검토하려면 범용 편집검토 프롬프트를 사용하십시오.</p>
+            </div>
+            <div class="generic-action">
+              <button id="generic-prompt-btn" class="btn btn-primary btn-large" type="button" aria-label="범용 인문사회 학술지 편집검토 프롬프트 다운로드 및 전문 복사">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span class="btn-text-full">범용 인문사회 학술지 편집검토 프롬프트 다운로드 + 복사</span>
+                <span class="btn-text-short">범용 프롬프트 다운로드 + 복사</span>
+              </button>
+              <div id="generic-copy-toast" class="toast toast-generic hidden" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USAGE GUIDE -->
+    <section id="usage-guide" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">AI 도구별 사용 절차</h2>
+          <p class="section-sub">각 도구의 특성에 맞게 프롬프트 활용 방식을 조정하십시오.</p>
+        </div>
+        <div class="three-col">
+
+          <!-- Claude -->
+          <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="card card-tool card-tool-link" aria-label="Claude.ai 바로가기">
+            <div class="tool-header">
+              <div class="tool-logo tool-logo-claude" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <span class="tool-badge tool-claude">Claude</span>
+              <span class="tool-link-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                claude.ai
+              </span>
+            </div>
+            <h3 class="tool-title">Claude 사용 권장 절차</h3>
+            <ol class="tool-steps">
+              <li>학술지 투고 양식 PDF를 업로드합니다.</li>
+              <li>투고규정 분석 및 <strong>저널 전용 편집 기준표</strong> 작성을 요청합니다.</li>
+              <li>검토할 논문 PDF를 업로드합니다.</li>
+              <li>학술지 편집검토 프롬프트를 붙여넣습니다.</li>
+              <li>논문 전수 검토를 요청합니다.</li>
+              <li>최종 결과를 <strong>docx 파일</strong>로 출력하도록 요청합니다.</li>
+            </ol>
+            <div class="tool-note tool-note-highlight">
+              Claude는 검토 결과를 docx 파일로 직접 생성할 수 있어 편집위원회 회람 자료로 바로 활용할 수 있습니다.
+            </div>
+          </a>
+
+          <!-- Gemini -->
+          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="card card-tool card-tool-link" aria-label="Gemini 바로가기">
+            <div class="tool-header">
+              <div class="tool-logo tool-logo-gemini" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <span class="tool-badge tool-gemini">Gemini</span>
+              <span class="tool-link-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                gemini.google.com
+              </span>
+            </div>
+            <h3 class="tool-title">Gemini 사용 권장 절차</h3>
+            <ol class="tool-steps">
+              <li>학술지 투고 양식 PDF를 업로드합니다.</li>
+              <li>투고규정 분석 및 <strong>저널 전용 편집 기준표</strong> 작성을 요청합니다.</li>
+              <li>검토할 논문 PDF를 업로드합니다.</li>
+              <li>학술지 편집검토 프롬프트를 붙여넣습니다.</li>
+              <li>논문 전수 검토를 요청합니다.</li>
+              <li>결과를 <strong>Google Docs</strong>로 내보내거나, 항목별 표 형식으로 정리하도록 요청합니다.</li>
+            </ol>
+            <div class="tool-note">
+              <strong>Gemini 최적 활용</strong><br>
+              Google Workspace와 연동하면 검토 결과를 Google Docs에 바로 저장할 수 있습니다. "결과를 Google Docs 문서로 만들어줘"라고 요청하거나, "수정 항목을 항목번호·위치·수정전·수정후·근거 열로 구성된 표로 정리해줘"라고 덧붙이십시오.
+            </div>
+          </a>
+
+          <!-- ChatGPT -->
+          <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="card card-tool card-tool-link" aria-label="ChatGPT 바로가기">
+            <div class="tool-header">
+              <div class="tool-logo tool-logo-gpt" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <span class="tool-badge tool-gpt">ChatGPT</span>
+              <span class="tool-link-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                chatgpt.com
+              </span>
+            </div>
+            <h3 class="tool-title">ChatGPT 사용 권장 절차</h3>
+            <ol class="tool-steps">
+              <li>학술지 투고 양식 PDF를 업로드합니다.</li>
+              <li>투고규정 분석 및 <strong>저널 전용 편집 기준표</strong> 작성을 요청합니다.</li>
+              <li>검토할 논문 PDF를 업로드합니다.</li>
+              <li>학술지 편집검토 프롬프트를 붙여넣습니다.</li>
+              <li>논문 전수 검토를 요청합니다.</li>
+              <li>코드 인터프리터를 통해 결과를 <strong>Excel(.xlsx) 또는 CSV</strong> 파일로 출력하도록 요청합니다.</li>
+            </ol>
+            <div class="tool-note">
+              <strong>ChatGPT 최적 활용</strong><br>
+              코드 인터프리터(Data Analysis)가 활성화된 경우 "수정 항목 전체를 Excel 파일로 만들어줘"라고 요청하면 항목번호·위치·수정전·수정후·근거가 정리된 스프레드시트를 직접 다운로드할 수 있습니다.
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INPUT FILES -->
+    <section id="input-files" class="section section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">입력 파일 준비법</h2>
+          <p class="section-sub">정확한 검토 결과를 위해 다음 기준에 맞는 파일을 준비하십시오.</p>
+        </div>
+        <div class="two-col two-col-input">
+          <div class="input-item">
+            <div class="input-num">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="input-body">
+              <h3>학술지 투고 양식 PDF</h3>
+              <p>학술지의 투고규정, 원고작성요령, 참고문헌 예시가 포함된 PDF를 준비합니다. 이 앱에서 제공하는 PDF를 우선 사용하되, 학술지 홈페이지의 최신 규정도 함께 확인하십시오.</p>
+            </div>
+          </div>
+          <div class="input-item">
+            <div class="input-num">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="input-body">
+              <h3>검토 대상 논문 PDF</h3>
+              <p>가능하면 최종 투고 직전의 PDF를 사용하십시오. 초록, 키워드, 본문, 각주, 참고문헌, 영문초록이 모두 포함되어야 합니다.</p>
+            </div>
+          </div>
+          <div class="input-item">
+            <div class="input-num">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="input-body">
+              <h3>여러 논문을 검토할 경우</h3>
+              <p>한 번에 너무 많은 논문을 넣기보다, 논문 1편씩 검토하는 방식을 권장합니다. 여러 편을 한 번에 처리하면 누락 가능성이 높아질 수 있습니다.</p>
+            </div>
+          </div>
+          <div class="input-item">
+            <div class="input-num">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <div class="input-body">
+              <h3>OCR이 필요한 파일</h3>
+              <p>스캔본 PDF는 AI가 텍스트를 정확히 읽지 못할 수 있습니다. 가능하면 텍스트 선택이 가능한 PDF를 사용하십시오.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section class="section section-security">
+      <div class="container">
+        <div class="security-notice">
+          <div class="security-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p>이 웹앱은 정적 안내 페이지이며, 사용자의 논문 파일을 서버에 업로드하거나 저장하지 않습니다. 다만 Claude, Gemini, ChatGPT 등 외부 AI 서비스에 파일을 업로드할 경우, 각 서비스의 데이터 처리 정책을 반드시 확인하십시오.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIMITATIONS -->
+    <section id="limitations" class="section">
+      <div class="container">
+        <div class="card card-warning">
+          <div class="card-icon-svg card-icon-warn" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h2 class="card-title">한계와 주의사항</h2>
+          <p class="warning-intro">이 도구는 학술지 편집검토를 보조하기 위한 자료 제공 도구입니다. AI의 결과는 최종 판단이 아니며, 반드시 연구자·편집자·심사자가 직접 확인해야 합니다.</p>
+          <p class="warning-subtitle">특히 다음 항목은 반드시 사람이 재검토해야 합니다.</p>
+          <ol class="warning-list">
+            <li>인명, 생몰연대, 지명, 기관명, 문헌명</li>
+            <li>저작 귀속, 판본, 대장경 번호, 주석서명</li>
+            <li>각주와 참고문헌의 실제 대응 관계</li>
+            <li>학술지 홈페이지의 최신 투고규정</li>
+            <li>AI가 제안한 문장 수정의 의미 변화 여부</li>
+          </ol>
+          <p class="warning-body">AI는 오탈자와 형식 오류를 찾는 데 도움이 될 수 있지만, 학문적 판단과 최종 편집 책임을 대신할 수 없습니다.</p>
+          <div class="warning-highlight">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:1px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            AI 검토 결과는 참고자료이며, 최종 제출 전 반드시 면밀한 수작업 검토를 거쳐야 합니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-copy">
+          <p>© 서담 한민수, 동명대학교. All rights reserved.</p>
+        </div>
+        <div class="footer-cc">
+          <p>본 자료는
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>
+            조건에 따라 공유됩니다.
+          </p>
+          <p class="footer-cc-detail">저작자 표시, 비영리 이용, 변경 금지를 원칙으로 합니다. 자료의 수정·변형·재배포 또는 2차 저작물 제작이 필요한 경우 저작권자의 사전 허가를 받아야 합니다.</p>
+          <p>
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer" class="footer-cc-full">
+              Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
