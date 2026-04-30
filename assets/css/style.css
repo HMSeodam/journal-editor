@@ -155,6 +155,7 @@ a.card-tool-link[href*="chatgpt"]:hover  .tool-link-hint{ color:#1A5C3A; }
 .result-steps strong{color:var(--navy);}
 .result-steps-note{font-size:.78rem;color:var(--teal);font-weight:500;}
 .result-buttons{display:flex;flex-wrap:wrap;gap:10px;}
+.result-buttons-secondary{margin-top:4px;}
 
 /* ── Toast ───────────────────────────────────────────────── */
 .toast{margin-top:12px;padding:10px 16px;background:var(--navy);color:#fff;
