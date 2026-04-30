@@ -158,20 +158,9 @@ function handleMdBtn(filePath, fileName, toastEl, toastKey) {
     fileName,
     'text/markdown',
     function(text) {
-      /* 다운로드 성공 */
-      if (isMobile() && text) {
-        /* 모바일: 다운로드 + 전문 복사 */
-        copyToClipboard(text, function() {
-          showToast(toastEl,
-            '✓ 다운로드 완료 · 프롬프트 전문이 클립보드에 복사되었습니다.',
-            toastKey);
-        });
-      } else {
-        /* PC: 다운로드만 */
-        showToast(toastEl,
-          '✓ 다운로드 완료.',
-          toastKey);
-      }
+      showToast(toastEl,
+        '✓ 다운로드 완료.',
+        toastKey);
     },
     function() {
       showToast(toastEl,
