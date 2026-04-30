@@ -252,6 +252,7 @@ a.card-tool-link[href*="chatgpt"]:hover  .tool-link-hint{ color:#1A5C3A; }
   .result-buttons{flex-direction:column;}
   .result-buttons .btn{width:100%;justify-content:center;}
   .generic-inner{flex-direction:column;gap:20px;}
+  .generic-text{flex:0 0 auto;}
   .generic-action{width:100%;}
   .generic-action .btn{
     width:100%;justify-content:center;
