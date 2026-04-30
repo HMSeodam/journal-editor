@@ -69,18 +69,20 @@
               </div>
               <ol class="result-steps">
                 <li>먼저 <strong>투고 양식 PDF</strong>를 다운로드하십시오.</li>
-                <li>그다음 <strong>불교학 편집검토 프롬프트</strong>를 다운로드하십시오.<br><span class="result-steps-note">다운로드와 동시에 프롬프트 전문이 클립보드에 자동 복사됩니다.</span></li>
-                <li>AI 도구에 투고 양식 PDF와 검토 대상 논문 PDF를 업로드한 뒤, 프롬프트를 붙여넣으십시오.</li>
+                <li>그다음 <strong>불교학 편집검토 프롬프트</strong>를 다운로드하십시오.</li>
+                <li>AI 도구의 입력창에서 프롬프트를 불러온 뒤, <strong>「시작」</strong>이라고 입력하십시오.</li>
               </ol>
               <div class="result-buttons">
                 <button id="pdf-download-btn" type="button" class="btn btn-download" aria-label="투고 양식 PDF 다운로드">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                   투고 양식 PDF 다운로드
                 </button>
-                <button id="buddhist-prompt-btn" class="btn btn-download btn-prompt" type="button" aria-label="불교학 편집검토 프롬프트 다운로드 및 전문 복사">
+                <button id="buddhist-prompt-btn" class="btn btn-download btn-prompt" type="button" aria-label="불교학 편집검토 프롬프트 다운로드">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  불교학 편집검토 프롬프트 다운로드 + 복사
+                  불교학 편집검토 프롬프트 다운로드
                 </button>
+              </div>
+              <div class="result-buttons result-buttons-secondary">
                 <button id="copy-usage-btn" class="btn btn-copy" type="button">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                   사용법 복사하기
@@ -127,10 +129,10 @@
               <p class="card-desc">불교학 학술지가 아닌 인문사회 분야 학술지를 검토하려면 범용 편집검토 프롬프트를 사용하십시오.</p>
             </div>
             <div class="generic-action">
-              <button id="generic-prompt-btn" class="btn btn-primary btn-large" type="button" aria-label="범용 인문사회 학술지 편집검토 프롬프트 다운로드 및 전문 복사">
+              <button id="generic-prompt-btn" class="btn btn-primary btn-large" type="button" aria-label="범용 인문사회 학술지 편집검토 프롬프트 다운로드">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span class="btn-text-full">범용 인문사회 학술지 편집검토 프롬프트 다운로드 + 복사</span>
-                <span class="btn-text-short">범용 프롬프트 다운로드 + 복사</span>
+                <span class="btn-text-full">범용 인문사회 학술지 편집검토 프롬프트 다운로드</span>
+                <span class="btn-text-short">범용 프롬프트 다운로드</span>
               </button>
               <div id="generic-copy-toast" class="toast toast-generic hidden" role="status" aria-live="polite"></div>
             </div>
@@ -162,12 +164,10 @@
             </div>
             <h3 class="tool-title">Claude 사용 권장 절차</h3>
             <ol class="tool-steps">
-              <li>학술지 투고 양식 PDF를 업로드합니다.</li>
-              <li>투고규정 분석 및 <strong>저널 전용 편집 기준표</strong> 작성을 요청합니다.</li>
-              <li>검토할 논문 PDF를 업로드합니다.</li>
-              <li>학술지 편집검토 프롬프트를 붙여넣습니다.</li>
-              <li>논문 전수 검토를 요청합니다.</li>
-              <li>최종 결과를 <strong>docx 파일</strong>로 출력하도록 요청합니다.</li>
+              <li>Claude 입력 화면에서 편집검토 프롬프트를 불러옵니다.</li>
+              <li><strong>「시작」</strong>이라고 입력합니다.</li>
+              <li>Claude가 요청하면 <strong>규정집 PDF</strong>와 <strong>논문 PDF</strong>를 업로드합니다.</li>
+              <li><strong>「논문을 전수 검토하고, 최종 결과를 docx 파일로 만들어줘」</strong>라고 입력합니다.</li>
             </ol>
             <div class="tool-note tool-note-highlight">
               Claude는 검토 결과를 docx 파일로 직접 생성할 수 있어 편집위원회 회람 자료로 바로 활용할 수 있습니다.
@@ -188,16 +188,14 @@
             </div>
             <h3 class="tool-title">Gemini 사용 권장 절차</h3>
             <ol class="tool-steps">
-              <li>학술지 투고 양식 PDF를 업로드합니다.</li>
-              <li>투고규정 분석 및 <strong>저널 전용 편집 기준표</strong> 작성을 요청합니다.</li>
-              <li>검토할 논문 PDF를 업로드합니다.</li>
-              <li>학술지 편집검토 프롬프트를 붙여넣습니다.</li>
-              <li>논문 전수 검토를 요청합니다.</li>
-              <li>결과를 <strong>Google Docs</strong>로 내보내거나, 항목별 표 형식으로 정리하도록 요청합니다.</li>
+              <li>Gemini 입력 화면에서 편집검토 프롬프트를 불러옵니다.</li>
+              <li><strong>「시작」</strong>이라고 입력합니다.</li>
+              <li>Gemini가 요청하면 <strong>규정집 PDF</strong>와 <strong>논문 PDF</strong>를 업로드합니다.</li>
+              <li><strong>「논문을 전수 검토하고, 최종 결과를 Google Docs 문서로 만들어줘」</strong>라고 입력합니다.</li>
             </ol>
             <div class="tool-note">
               <strong>Gemini 최적 활용</strong><br>
-              Google Workspace와 연동하면 검토 결과를 Google Docs에 바로 저장할 수 있습니다. "결과를 Google Docs 문서로 만들어줘"라고 요청하거나, "수정 항목을 항목번호·위치·수정전·수정후·근거 열로 구성된 표로 정리해줘"라고 덧붙이십시오.
+              Google Workspace와 연동하면 검토 결과를 Google Docs에 바로 저장할 수 있습니다. 표 형식이 필요한 경우 「수정 항목을 항목번호·위치·수정전·수정후·근거 열로 구성된 표로 정리해줘」라고 덧붙이십시오.
             </div>
           </a>
 
@@ -215,16 +213,14 @@
             </div>
             <h3 class="tool-title">ChatGPT 사용 권장 절차</h3>
             <ol class="tool-steps">
-              <li>학술지 투고 양식 PDF를 업로드합니다.</li>
-              <li>투고규정 분석 및 <strong>저널 전용 편집 기준표</strong> 작성을 요청합니다.</li>
-              <li>검토할 논문 PDF를 업로드합니다.</li>
-              <li>학술지 편집검토 프롬프트를 붙여넣습니다.</li>
-              <li>논문 전수 검토를 요청합니다.</li>
-              <li>코드 인터프리터를 통해 결과를 <strong>Excel(.xlsx) 또는 CSV</strong> 파일로 출력하도록 요청합니다.</li>
+              <li>ChatGPT 입력 화면에서 편집검토 프롬프트를 불러옵니다.</li>
+              <li><strong>「시작」</strong>이라고 입력합니다.</li>
+              <li>ChatGPT가 요청하면 <strong>규정집 PDF</strong>와 <strong>논문 PDF</strong>를 업로드합니다.</li>
+              <li><strong>「논문을 전수 검토하고, 최종 결과를 Excel 파일로 만들어줘」</strong>라고 입력합니다.</li>
             </ol>
             <div class="tool-note">
               <strong>ChatGPT 최적 활용</strong><br>
-              코드 인터프리터(Data Analysis)가 활성화된 경우 "수정 항목 전체를 Excel 파일로 만들어줘"라고 요청하면 항목번호·위치·수정전·수정후·근거가 정리된 스프레드시트를 직접 다운로드할 수 있습니다.
+              코드 인터프리터(Data Analysis)가 활성화된 경우 항목번호·위치·수정전·수정후·근거가 정리된 스프레드시트를 <strong>Excel(.xlsx) 또는 CSV</strong> 파일로 직접 다운로드할 수 있습니다.
             </div>
           </a>
 
